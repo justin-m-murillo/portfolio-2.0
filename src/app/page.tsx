@@ -9,8 +9,7 @@ import useSnapScroll from '@/hooks/useSnapScroll'
 import { getSections } from '@/static_data'
 
 export default function Index() {
-  //const [scroll, setScroll] = useState(0)
-  const scrollRef = useRef(0)
+  const [scroll, setScroll] = useState(0)
   const indexRef = useRef(0)
   const canScroll = useRef(true)
   const homeRef = useRef<HTMLElement>(null)
@@ -22,21 +21,40 @@ export default function Index() {
     projRef,
   ]
 
-  const [setScroll] = useSnapScroll(sections)
+  // const [setScroll] = useSnapScroll(sections)
+
+  const handleWheel = () => {
+    if (scroll < 0 && indexRef.current - 1 >= 0) {
+      indexRef.current--
+    }
+    if (scroll > 0 && indexRef.current + 1 < sections.length) {
+      indexRef.current++
+    }
+  }
+
+  useEffect(() => {
+    //console.log('useeffect')
+    canScroll.current = false
+    handleWheel()
+    console.log('Index', indexRef.current)
+    sections[indexRef.current].current?.scrollIntoView({ behavior: 'smooth' })
+    setScroll(0)
+    const timer = setTimeout(() => {
+      canScroll.current = true
+    }, 3e2)
+    return () => clearTimeout(timer)
+  }, [scroll])
 
   return (
     <main 
       className="main"
       onWheel={e => {
-        console.log('Delta', e.deltaY)
-        setScroll(e.deltaY)
-        e.deltaY = 0
+        if (canScroll.current) {
+          //console.log('Delta', e.deltaY)
+          setScroll(e.deltaY)
+          e.deltaY = 0
+        }
       }}
-      // onWheel={(e) => {
-      //   if (canScroll.current) {
-      //     setScroll(e.deltaY)
-      //   }
-      // }}
     >
 
       {/* Icons */}

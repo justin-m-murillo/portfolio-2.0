@@ -16,14 +16,12 @@ const useSnapScroll = (sections: RefObject<HTMLElement>[]):
   }
 
   useEffect(() => {
-    console.log('useeffect')
-    //canScroll.current = false
+    //console.log('useeffect')
     handleWheel()
     console.log('Index', indexRef.current)
     sections[indexRef.current].current?.scrollIntoView({ behavior: 'smooth' })
     const timer = setTimeout(() => {
       setScroll(0)
-      //canScroll.current = true
     }, 5.8e2)
     return () => clearTimeout(timer)
   }, [scroll])
