@@ -20,7 +20,7 @@ const Icon = ({ url, network }: IconProps) => {
 const IconRow = () => {
   return (
     <header className='header'>
-      <div>
+      <div className='icon-group'>
         <Icon url='https://github.com/justin-m-murillo' />
         <Icon url='https://github.com/justin-m-murillo' />
       </div>

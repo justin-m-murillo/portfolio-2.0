@@ -1,20 +1,23 @@
-import './face-portrait.css'
 import React from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
-import facepic from '../../../public/portraitimg.jpg'
+type FacePortraitProps = {
+  src: string | StaticImageData
+  size?: number
+  rounded?: boolean
+}
 
-type Props = {}
-
-const FacePortrait = (props: Props) => {
-  const size = 256;
+const FacePortrait = ({ src, size=256, rounded }: FacePortraitProps) => {
   return (
     <Image 
-      src={facepic}
+      src={src}
       width={size}
       height={size}
       alt='A portrait image of Justin Murillo'
-      className='face-portrait'
+      style={{ 
+        display: 'flex',
+        borderRadius: rounded ? '50%' : 0 
+      }}
     />
   )
 }

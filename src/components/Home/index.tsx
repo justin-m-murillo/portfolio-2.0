@@ -5,10 +5,13 @@ import FacePortrait from '../_subcomponents/FacePortrait'
 import TextFadeCarousel from '../_subcomponents/TextFadeCarousel'
 import Typewriter from '../_subcomponents/Typewriter'
 
+import facepic from '../../../public/portraitimg.jpg'
+
 const Home = () => {
   const carouselWords = [
     'React',
     'React Native',
+    'Next.js',
     'Typescript',
     'Tailwind CSS',
     'Amazon Web Services',
@@ -20,7 +23,7 @@ const Home = () => {
 
   const typeWriterWords = [
     'Hi!',
-    'My name is Justin',
+    "I'm Justin",
     'Nice to meet you!',
   ]
 
@@ -29,7 +32,7 @@ const Home = () => {
       <div className='home-container'>
         <div className='home-content'>
           <div className='home-element'>
-            <FacePortrait />
+            <FacePortrait src={facepic} rounded />
           </div>
           <div className='home-element'>
             <TextFadeCarousel words={carouselWords} />
