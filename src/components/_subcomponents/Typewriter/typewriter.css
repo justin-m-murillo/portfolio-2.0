@@ -1,0 +1,13 @@
+.typewriter-container {
+  height: 3.3rem;
+  font-size: 3rem;
+}
+
+.typewriter-word {
+  color: var(--slate4)
+}
+
+.typewriter-cursor {
+  font-size: 3.3rem;
+  color: var(--orange);
+}
