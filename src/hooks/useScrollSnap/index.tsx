@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef, RefObject, MutableRefObject } from 'react'
 
-const useSnapScroll = (sections: RefObject<HTMLElement>[]): 
-  [React.Dispatch<React.SetStateAction<number>>] => 
+
+const useScrollSnap = (sections: RefObject<HTMLElement>[]): 
+  [React.Dispatch<React.SetStateAction<number>>, MutableRefObject<boolean>] => 
 {
   const [scroll, setScroll] = useState(0)
   const indexRef = useRef(0)
+  const canScroll = useRef(true)
 
   const handleWheel = () => {
     if (scroll < 0 && indexRef.current - 1 >= 0) {
@@ -17,16 +19,18 @@ const useSnapScroll = (sections: RefObject<HTMLElement>[]):
 
   useEffect(() => {
     //console.log('useeffect')
+    canScroll.current = false
     handleWheel()
-    console.log('Index', indexRef.current)
+    //console.log('Index', indexRef.current)
     sections[indexRef.current].current?.scrollIntoView({ behavior: 'smooth' })
+    setScroll(0)
     const timer = setTimeout(() => {
-      setScroll(0)
-    }, 5.8e2)
+      canScroll.current = true
+    }, 3e2)
     return () => clearTimeout(timer)
   }, [scroll])
 
-  return [setScroll]
+  return [setScroll, canScroll]
 }
 
-export default useSnapScroll
+export default useScrollSnap
