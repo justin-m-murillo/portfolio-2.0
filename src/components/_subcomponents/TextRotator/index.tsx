@@ -1,14 +1,14 @@
 'use client'
-import { useTextCarousel } from '@/hooks/useTextCarousel'
+import { useTextRotator } from '@/hooks/useTextRotator'
 import './text-fade-carousel.css'
 import React from 'react'
 
-type TextFadeCarouselProps = {
+type TextRotatorProps = {
   words: string[],
 }
 
-const TextFadeCarousel = ({ words }: TextFadeCarouselProps) => {
-  const [word] = useTextCarousel({ 
+const TextRotator = ({ words }: TextRotatorProps) => {
+  const [word] = useTextRotator({ 
     words: words, 
     delay: 3e3 
   })
@@ -24,4 +24,4 @@ const TextFadeCarousel = ({ words }: TextFadeCarouselProps) => {
   )
 }
 
-export default TextFadeCarousel
+export default TextRotator

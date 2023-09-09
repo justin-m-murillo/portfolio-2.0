@@ -4,6 +4,9 @@ import Home from "@/components/Home"
 import About from "@/components/About"
 import Projects from "@/components/Projects"
 import IconRow from "@/components/_subcomponents/IconRow"
+import useSnapScroll from '@/hooks/useSnapScroll'
+
+import { getSections } from '@/static_data'
 
 export default function Index() {
   const [scroll, setScroll] = useState(0)
@@ -29,24 +32,30 @@ export default function Index() {
   }
 
   useEffect(() => {
+    //canScroll.current = false
     handleWheel()
+    console.log('Index', indexRef.current)
     sections[indexRef.current].current?.scrollIntoView({ behavior: 'smooth' })
     const timer = setTimeout(() => {
       setScroll(0)
-      canScroll.current = true
-    }, 6e2)
+      //canScroll.current = true
+    }, 5.8e2)
     return () => clearTimeout(timer)
   }, [scroll])
 
   return (
     <main 
       className="main"
-      onWheel={(e) => {
-        if (canScroll.current) {
-          setScroll(e.deltaY)
-          canScroll.current = false
-        }
+      onWheel={e => {
+        console.log('Delta', e.deltaY)
+        setScroll(e.deltaY)
+        e.deltaY = 0
       }}
+      // onWheel={(e) => {
+      //   if (canScroll.current) {
+      //     setScroll(e.deltaY)
+      //   }
+      // }}
     >
 
       {/* Icons */}
