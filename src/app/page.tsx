@@ -9,7 +9,7 @@ import useSnapScroll from '@/hooks/useSnapScroll'
 import { getSections } from '@/static_data'
 
 export default function Index() {
-  const [scroll, setScroll] = useState(0)
+  //const [scroll, setScroll] = useState(0)
   const scrollRef = useRef(0)
   const indexRef = useRef(0)
   const canScroll = useRef(true)
@@ -22,26 +22,7 @@ export default function Index() {
     projRef,
   ]
 
-  const handleWheel = () => {
-    if (scroll < 0 && indexRef.current - 1 >= 0) {
-      indexRef.current--
-    }
-    if (scroll > 0 && indexRef.current + 1 < sections.length) {
-      indexRef.current++
-    }
-  }
-
-  useEffect(() => {
-    //canScroll.current = false
-    handleWheel()
-    console.log('Index', indexRef.current)
-    sections[indexRef.current].current?.scrollIntoView({ behavior: 'smooth' })
-    const timer = setTimeout(() => {
-      setScroll(0)
-      //canScroll.current = true
-    }, 5.8e2)
-    return () => clearTimeout(timer)
-  }, [scroll])
+  const [setScroll] = useSnapScroll(sections)
 
   return (
     <main 
