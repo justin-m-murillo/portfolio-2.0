@@ -1,5 +1,6 @@
 'use client'
 import IconRow from "@/components/_subcomponents/IconRow"
+import Home from "@/components/Home"
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 
 import { getSections } from '@/static_data'
@@ -15,7 +16,6 @@ export default function Index() {
       className="main"
       onWheel={e => {
         if (canScroll.current) {
-          //console.log('Delta', e.deltaY)
           setScroll(e.deltaY)
           e.deltaY = 0
         }
@@ -32,7 +32,7 @@ export default function Index() {
           {section.component}
         </section>
       ))}
-      
+
     </main>
   )
 }

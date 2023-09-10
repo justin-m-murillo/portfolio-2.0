@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import Home from '@/components/Home'
 import About from '@/components/About'
+import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 
 export const getTypeWriterWords = () => {
@@ -30,6 +31,7 @@ export const getSections = () => {
   return [
     { label: 'Home',     id: 'home',     component: <Home/>,     ref: useRef<HTMLElement>(null) },
     { label: 'About',    id: 'about',    component: <About/>,    ref: useRef<HTMLElement>(null) },
+    { label: 'Skills',   id: 'skills',   component: <Skills/>,   ref: useRef<HTMLElement>(null) },
     { label: 'Projects', id: 'projects', component: <Projects/>, ref: useRef<HTMLElement>(null) },
   ]
 }

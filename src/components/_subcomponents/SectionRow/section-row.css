@@ -1,0 +1,39 @@
+.section-row-nav {
+  display: grid;
+  grid-template-columns: 8rem 8rem 8rem;
+  grid-template-rows: 5rem;
+  align-items: center;
+}
+
+.section-btn-wrapper {
+  padding: 0.1rem;
+}
+
+.section-btn {
+  background-color: transparent;
+  color: var(--slate2);
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 300ms ease-out;
+  transition: transform 300ms ease-out;
+}
+
+.section-btn:hover {
+  color: var(--red);
+  transform: scale(1.1);
+}
+
+@media (width < 600px) {
+  .section-row-nav {
+    flex-direction: column;
+  }
+
+  .section-btn {
+    margin: 0.5rem 0;
+  }
+}
