@@ -1,8 +1,9 @@
 :root {
   --slate1: #E2E8F0;
   --slate2: #64748B;
-  --slate3: #1E293B;
-  --slate4: #0F172A;
+  --slate3: #334155;
+  --slate4: #1E293B;
+  --slate5: #0F172A;
   --red: #963D5A;
   --orange: #E07A5F;
 }
@@ -22,5 +23,40 @@ body {
   margin: 0;
   max-width: 100vw;
   height: auto;
+}
+
+
+
+nav {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-slate1 {
   background-color: var(--slate1);
+}
+
+.lgtr-slate2-slate1 {
+  background-image: linear-gradient(to top right, var(--slate2), var(--slate1) );
+}
+
+.lgtr-slate3-slate2 {
+  background-image: linear-gradient(to top right, var(--slate3), var(--slate2) );
+}
+
+.lgtr-slate4-slate3 {
+  background: #152338;
+background: linear-gradient(45deg, #152338, #374B66);
 }

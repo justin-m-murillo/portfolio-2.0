@@ -1,38 +1,43 @@
 'use client'
 import IconRow from "@/components/_subcomponents/IconRow"
-import Home from "@/components/Home"
 import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { NavIndexContext } from '@/context/NavIndexContext'
 
 import { getSections } from '@/static_data'
 
 export default function Index() {
   const sections = getSections()
-  const [setScroll, canScroll] = useScrollSnap({
-    sections: sections.map(section => section.ref)
+  const {setScroll, index, setIndex, canScroll}= useScrollSnap({
+    sections: sections.map(section => section.ref),
   })
 
   return (
-    <main 
-      className="main"
-      onWheel={e => {
-        if (canScroll.current) {
-          setScroll(e.deltaY)
-          e.deltaY = 0
-        }
-      }}
-    >
+    <NavIndexContext.Provider value={{ 
+      navIndex: index, 
+      setNavIndex: setIndex 
+    }}>
+      <main
+        className="main"
+        onWheel={e => {
+          if (canScroll.current) {
+            setScroll(e.deltaY)
+            e.deltaY = 0
+        }}}
+      >
 
-      {/* Icons */}
-      <nav style={{ position: 'fixed', width: '100%' }}>
-        <IconRow />
-      </nav>
+        {/* Icons */}
+        <nav>
+          <IconRow />
+        </nav>
 
-      {sections.map(section => (
-        <section key={section.id} id={section.id} ref={section.ref}>
-          {section.component}
-        </section>
-      ))}
+        {/* Sections */}
+        {sections.map(sec => (
+          <section key={sec.id} id={sec.id} ref={sec.ref}>
+            {sec.component}
+          </section>
+        ))}
 
-    </main>
+      </main>
+    </NavIndexContext.Provider>
   )
 }

@@ -4,6 +4,17 @@ import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 
+export const getColorPalette = () => {
+  return {
+    slate1: "#E2E8F0",
+    slate2: "#64748B",
+    slate3: "#1E293B",
+    slate4: "#0F172A",
+    red:    "#963D5A",
+    orange: "#E07A5F", 
+  }
+}
+
 export const getTypeWriterWords = () => {
   return [
     'Hi!',
@@ -17,8 +28,8 @@ export const getSkillWords = () => {
     'React',
     'React Native',
     'Next.js',
-    'Typescript',
     'Tailwind CSS',
+    'Framer Motion',
     'Amazon Web Services',
     'Google Maps API',
     'Prisma',
@@ -29,9 +40,9 @@ export const getSkillWords = () => {
 
 export const getSections = () => {
   return [
-    { label: 'Home',     id: 'home',     component: <Home/>,     ref: useRef<HTMLElement>(null) },
-    { label: 'About',    id: 'about',    component: <About/>,    ref: useRef<HTMLElement>(null) },
-    { label: 'Skills',   id: 'skills',   component: <Skills/>,   ref: useRef<HTMLElement>(null) },
-    { label: 'Projects', id: 'projects', component: <Projects/>, ref: useRef<HTMLElement>(null) },
+    { index: 0, label: 'Home',     id: 'home',     component: <Home/>,     ref: useRef<HTMLElement>(null) },
+    { index: 1, label: 'About Me', id: 'about',    component: <About/>,    ref: useRef<HTMLElement>(null) },
+    { index: 2, label: 'Skills',   id: 'skills',   component: <Skills/>,   ref: useRef<HTMLElement>(null) },
+    { index: 3, label: 'Projects', id: 'projects', component: <Projects/>, ref: useRef<HTMLElement>(null) },
   ]
 }

@@ -1,13 +1,32 @@
 import React from 'react'
-import Page from '../_subcomponents/Page'
+import Image from 'next/image'
 
-type Props = {}
+import aboutpic from '../../../public/milo-and-i.jpg'
+import './about.css'
+import { getColorPalette } from '@/static_data'
 
-const About = (props: Props) => {
+const About = () => {
+  const { slate3 } = getColorPalette()
   return (
-    <Page>
-      <h1>About</h1>
-    </Page>
+    <div className='page lgtr-slate4-slate3'>
+      <div className='about-container'>
+        <div className='about-item-container'>
+          <Image 
+            src={aboutpic}
+            width={400}
+            sizes='20%' 
+            alt='A picture of Milo and Justin'
+            style={{ borderRadius: '10px' }}
+          />
+        </div>
+        <div className='about-item-container'>
+          <div className='about-desc-container'>
+            <h1>A little about <span>me</span> ...</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tincidunt vitae semper quis lectus. Pretium viverra suspendisse potenti nullam. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Magna etiam tempor orci eu lobortis elementum nibh. Aliquet nibh praesent tristique magna sit amet purus. Eget est lorem ipsum dolor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

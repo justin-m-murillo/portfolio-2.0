@@ -1,6 +1,6 @@
 'use client'
 import { useTextRotator } from '@/hooks/useTextRotator'
-import './text-fade-carousel.css'
+import './text-rotator.css'
 import React from 'react'
 
 type TextRotatorProps = {

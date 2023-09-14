@@ -1,13 +1,14 @@
 import React from 'react'
-import Page from '../_subcomponents/Page'
 
 type Props = {}
 
 const Projects = (props: Props) => {
+  const bg1 = 'lgtr-slate3-slate2'
+  const bg2 = 'lgtr-slate4-slate3'
   return (
-    <Page>
+    <div className={`page ${bg1}`}>
       <h1>Projects</h1>
-    </Page>
+    </div>
   )
 }
 
