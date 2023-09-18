@@ -4,6 +4,9 @@ import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 
+import js from '../../public/js.png'
+import rt from '../../public/react.png'
+
 export const getColorPalette = () => {
   return {
     slate1: "#E2E8F0",
@@ -44,5 +47,11 @@ export const getSections = () => {
     { index: 1, label: 'About Me', id: 'about',    component: <About/>,    ref: useRef<HTMLElement>(null) },
     { index: 2, label: 'Skills',   id: 'skills',   component: <Skills/>,   ref: useRef<HTMLElement>(null) },
     { index: 3, label: 'Projects', id: 'projects', component: <Projects/>, ref: useRef<HTMLElement>(null) },
+  ]
+}
+
+export const getSkills = () => {
+  return [
+    
   ]
 }

@@ -1,0 +1,5 @@
+.face-portrait {
+  display: flex;
+  border-radius: 50%;
+  margin: 0 10px;
+}

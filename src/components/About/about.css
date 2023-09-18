@@ -1,19 +1,22 @@
 .about-container {
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-item-container {
-  width: 100%;
+  margin: 0px 2rem;
+  width: 35%;
   display: flex;
-  justify-content: center;
+  display: column;
+  justify-content: end;
   align-items: center;
 }
 
 .about-desc-container {
   width: 100%;
-  color: white;
 }
 
 .about-desc-container h1 {
@@ -21,11 +24,39 @@
 }
 
 .about-desc-container span {
-  text-decoration: underline var(--orange);
+  text-decoration: underline var(--lion);
   text-underline-offset: 0.2rem;
 }
 
 .about-desc-container p {
   font-size: large;
   line-height: 1.6;
+}
+
+@media (width < 1800px) {
+  .about-item-container {
+    width: 30%;
+  }
+}
+
+@media (width < 1500px) {
+  .about-item-container {
+    width: 35%;
+  }
+}
+
+@media (width < 1000px) {
+  .about-desc-container p {
+    font-size: medium;
+  }
+}
+
+@media (width < 600px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .about-desc-container p {
+    font-size: small;
+  }
 }

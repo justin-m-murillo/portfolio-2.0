@@ -14,7 +14,7 @@ import { getSections } from '@/static_data'
 const Home = () => {
   const sectionRow = getSections().filter(section => section.id != 'home')
   return (
-    <div className='page bg-slate1'>
+    <div className='page'>
       <div className='home-container'>
         <div className='home-element'>
           <FacePortrait src={facepic} rounded />

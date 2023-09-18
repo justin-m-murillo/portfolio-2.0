@@ -15,7 +15,7 @@ const Typewriter = ({ words }: TypewriterProps) => {
 
   return (
     <div className='typewriter-container'>
-      <span className='typewriter-word'>
+      <span>
         {text}
       </span>
       <span className='typewriter-cursor'>

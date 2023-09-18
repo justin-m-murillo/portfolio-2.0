@@ -1,0 +1,35 @@
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'home',
+  title: 'Home',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        }
+      ]
+    }),
+    defineField({
+      name: 'occupation',
+      title: 'Occupation',
+      type: 'string',
+    }),
+    defineField({
+      name: 'typeText',
+      title: 'TypeText',
+      type: 'array',
+      of: [{type: 'string'}]
+    }),
+  ],
+})

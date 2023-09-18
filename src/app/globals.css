@@ -1,10 +1,21 @@
 :root {
-  --slate1: #E2E8F0;
-  --slate2: #64748B;
-  --slate3: #334155;
+  --slate1: #e2e8f0;
+  --slate2: #cbd5e1;
+  --slate3: #64748B;
   --slate4: #1E293B;
   --slate5: #0F172A;
-  --red: #963D5A;
+  --gray: #BFD2BF;
+  --gray1: #d4d4d8;
+  --gray2: #a1a1aa;
+  --gray3: #71717a;
+  --gray4: #52525b;
+  --gray5: #3f3f46;
+  --gray6: #27272a;
+  --gray7: #18181b;
+  --gray8: #09090b;
+  --red: #931621;
+  --blue: #087F8C;
+  --lion: #BB9457;
   --orange: #E07A5F;
 }
 
@@ -23,9 +34,9 @@ body {
   margin: 0;
   max-width: 100vw;
   height: auto;
+  background-color: var(--gray7);
+  color: white;
 }
-
-
 
 nav {
   position: fixed;
@@ -42,21 +53,4 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.bg-slate1 {
-  background-color: var(--slate1);
-}
-
-.lgtr-slate2-slate1 {
-  background-image: linear-gradient(to top right, var(--slate2), var(--slate1) );
-}
-
-.lgtr-slate3-slate2 {
-  background-image: linear-gradient(to top right, var(--slate3), var(--slate2) );
-}
-
-.lgtr-slate4-slate3 {
-  background: #152338;
-background: linear-gradient(45deg, #152338, #374B66);
 }

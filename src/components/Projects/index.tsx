@@ -1,12 +1,8 @@
 import React from 'react'
 
-type Props = {}
-
-const Projects = (props: Props) => {
-  const bg1 = 'lgtr-slate3-slate2'
-  const bg2 = 'lgtr-slate4-slate3'
+const Projects = () => {
   return (
-    <div className={`page ${bg1}`}>
+    <div className='page'>
       <h1>Projects</h1>
     </div>
   )

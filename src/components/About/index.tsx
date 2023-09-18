@@ -3,20 +3,19 @@ import Image from 'next/image'
 
 import aboutpic from '../../../public/milo-and-i.jpg'
 import './about.css'
-import { getColorPalette } from '@/static_data'
+import { useWindowDimensions } from '@/hooks/useWindowDimensions'
 
 const About = () => {
-  const { slate3 } = getColorPalette()
+  const { width } = useWindowDimensions()
+  //console.log(width) 
   return (
-    <div className='page lgtr-slate4-slate3'>
+    <div className='page'>
       <div className='about-container'>
         <div className='about-item-container'>
           <Image 
             src={aboutpic}
-            width={400}
-            sizes='20%' 
             alt='A picture of Milo and Justin'
-            style={{ borderRadius: '10px' }}
+            width={360}
           />
         </div>
         <div className='about-item-container'>

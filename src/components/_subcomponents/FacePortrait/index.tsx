@@ -16,7 +16,8 @@ const FacePortrait = ({ src, size=256, rounded }: FacePortraitProps) => {
       alt='A portrait image of Justin Murillo'
       style={{ 
         display: 'flex',
-        borderRadius: rounded ? '50%' : 0 
+        borderRadius: rounded ? '50%' : 0,
+        marginBottom: '10px', 
       }}
     />
   )

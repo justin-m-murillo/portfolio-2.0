@@ -44,7 +44,6 @@ export default function Index() {
             {sec.component}
           </section>
         ))}
-
       </main>
     </NavIndexContext.Provider>
   )
