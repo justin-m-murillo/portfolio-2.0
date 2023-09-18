@@ -1,12 +1,12 @@
 'use client'
 import { createContext, useContext } from 'react'
 
-export type NavIndexProps = {
+export type NavIndexContextProps = {
   navIndex: number
   setNavIndex: React.Dispatch<React.SetStateAction<number>>
 }
 
-export const NavIndexContext = createContext<NavIndexProps>({
+export const NavIndexContext = createContext<NavIndexContextProps>({
   navIndex: 0,
   setNavIndex: () => {},
 })

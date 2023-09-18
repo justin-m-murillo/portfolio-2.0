@@ -1,50 +1,20 @@
-'use client'
-import IconRow from "@/components/_subcomponents/IconRow"
-import { useScrollSnap } from '@/hooks/useScrollSnap'
-import { NavIndexContext } from '@/context/NavIndexContext'
+import { sanityClient } from "@/utils/configSanity"
+import Client from "@/components/Client"
+import { TSkill, TSkillCategory } from "@/typings";
 
-import { getSections } from '@/static_data'
-import { useKeyDownListener } from "@/hooks/useScrollArrows"
+const getData = async (query: string) => {
+  const data = await sanityClient.fetch(`*[_type == '${query}']`);
+  return data;
+}
 
-export default function Index() {
-  const sections = getSections()
-  const {setScroll, index, setIndex, canScroll} = useScrollSnap({
-    sections: sections.map(section => section.ref),
-  })
-
-  const handleArrowKey = (e: globalThis.KeyboardEvent) => {
-    switch (e.key) {
-      case 'ArrowDown': setScroll(1); break;
-      case 'ArrowUp': setScroll(-1); break;
-    }
-  }
-  useKeyDownListener({ handleInput: handleArrowKey })
-
+export default async function Index() {
+  const skills = (await getData('skill') as TSkill[])
+  const skillCategories = (await getData('skillCategory') as TSkillCategory[])
+  console.log(skills)
   return (
-    <NavIndexContext.Provider value={{ 
-      navIndex: index, 
-      setNavIndex: setIndex 
-    }}>
-      <main
-        className="main"
-        onWheel={e => {
-          if (canScroll.current) {
-            setScroll(e.deltaY)
-            e.deltaY = 0
-        }}}
-      >
-        {/* Icons */}
-        <nav>
-          <IconRow />
-        </nav>
-
-        {/* Sections */}
-        {sections.map(sec => (
-          <section key={sec.id} id={sec.id} ref={sec.ref}>
-            {sec.component}
-          </section>
-        ))}
-      </main>
-    </NavIndexContext.Provider>
+    <Client 
+      skills={skills} 
+      skillCategories={skillCategories} 
+    />
   )
 }
