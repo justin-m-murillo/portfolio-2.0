@@ -17,7 +17,6 @@ const Home = () => {
   const { sections } = useSectionsContext()
   const projectSection = sections.filter(sec => sec.id === 'projects')[0]
 
-  console.log(projectSection)
   return (
     <div className='module-container col full align-center justify-center'>
       <div className='main-container row'>

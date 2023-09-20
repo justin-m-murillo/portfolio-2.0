@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { getSections } from '@/static_data'
-import { TAbout, THome, TSection, TSkill, TSkillCategory } from '@/typings'
+import { TAbout, THome, TSection, TSkill, TSkillCategory, TVideo } from '@/typings'
 import CMSContextWrapper from '../_subcomponents/CMSContextWrapper'
 import NavBar from '../_subcomponents/NavBar'
 import NavBarSide from '@/components/_subcomponents/NavBarSide'
@@ -13,9 +13,10 @@ type ClientProps = {
   about: TAbout[]
   skills: TSkill[]
   skillCategories: TSkillCategory[]
+  video: TVideo[]
 }
 
-const Client = ({ home, about, skills, skillCategories }: ClientProps) => {
+const Client = ({ home, about, skills, skillCategories, video }: ClientProps) => {
   //const sections = getSections() as TSection[]
   const [sections, setSections] = useState<TSection[]>(getSections() as TSection[])
 
@@ -25,6 +26,7 @@ const Client = ({ home, about, skills, skillCategories }: ClientProps) => {
       about={about}
       skillCategories={skillCategories} 
       skills={skills}
+      video={video}
     >
       
       <SectionsContext.Provider value={{ sections, setSections }}>

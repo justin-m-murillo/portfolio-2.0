@@ -1,5 +1,5 @@
-import { TAbout, THome, TSkill, TSkillCategory } from '@/typings'
-import { SkillsContext, SkillCategoriesContext, AboutContext, HomeContext } from '@/context/CMSContext'
+import { TAbout, THome, TSkill, TSkillCategory, TVideo } from '@/typings'
+import { SkillsContext, SkillCategoriesContext, AboutContext, HomeContext, VideoContext } from '@/context/CMSContext'
 import React, { ReactNode, useState } from 'react'
 
 type ContextWrapperProps = {
@@ -7,6 +7,7 @@ type ContextWrapperProps = {
   about: TAbout[]
   skills: TSkill[]
   skillCategories: TSkillCategory[]
+  video: TVideo[]
   children: ReactNode
 }
 
@@ -15,13 +16,16 @@ const CMSContextWrapper = (props: ContextWrapperProps) => {
   const [about, setAbout] = useState<TAbout[]>(props.about)
   const [skills, setSkills] = useState<TSkill[]>(props.skills)
   const [skillCategories, setSkillCategories] = useState<TSkillCategory[]>(props.skillCategories)
-  
+  const [video, setVideo] = useState<TVideo[]>(props.video)
+
   return (
     <HomeContext.Provider value={{ home, setHome }}>
       <AboutContext.Provider value={{ about, setAbout }}>
         <SkillCategoriesContext.Provider value={{ skillCategories, setSkillCategories }}>
           <SkillsContext.Provider value={{ skills, setSkills }}>
-            { props.children }
+            <VideoContext.Provider value={{ video, setVideo }}>
+              { props.children }
+            </VideoContext.Provider>
           </SkillsContext.Provider>
         </SkillCategoriesContext.Provider>
       </AboutContext.Provider>

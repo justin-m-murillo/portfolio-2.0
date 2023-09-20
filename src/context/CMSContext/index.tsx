@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext } from 'react'
 
-import { TAbout, THome, TSkill, TSkillCategory } from '@/typings'
+import { TAbout, THome, TSkill, TSkillCategory, TVideo } from '@/typings'
 
 /** HOME CONTEXT */
 
@@ -51,9 +51,22 @@ export const SkillCategoriesContext = createContext<SkillCategoriesContextProps>
   setSkillCategories: () => {},
 })
 
+/** VIDEO */
+
+export type VideoContextProps = {
+  video: TVideo[]
+  setVideo: React.Dispatch<React.SetStateAction<TVideo[]>>
+}
+
+export const VideoContext = createContext<VideoContextProps>({
+  video: [],
+  setVideo: () => {},
+})
+
 /** EXPORT HOOKS */
 
 export const useHomeContext = () => useContext(HomeContext)
 export const useAboutContext = () => useContext(AboutContext)
 export const useSkillsContext = () => useContext(SkillsContext)
 export const useSkillCategoriesContext = () => useContext(SkillCategoriesContext)
+export const useVideoContext = () => useContext(VideoContext)
