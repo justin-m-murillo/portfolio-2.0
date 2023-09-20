@@ -23,17 +23,6 @@ type TImage = {
   }
 }
 
-type TMuxVideo = {
-  _type: 'mux.video',
-  asset: {
-    _weak: boolean
-    _ref: string
-    _type: 'reference'
-  }
-  title: string
-  _updatedAt: string
-}
-
 export type THome = TSanityBody & {
   intro: string
   image: TImage
@@ -68,5 +57,4 @@ export type TSkill = TSanityBody & {
 
 export type TVideo = TSanityBody & {
   title: string
-  video: TMuxVideo
 }
