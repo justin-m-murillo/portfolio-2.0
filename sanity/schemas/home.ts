@@ -21,8 +21,8 @@ export default defineType({
       ]
     }),
     defineField({
-      name: 'occupation',
-      title: 'Occupation',
+      name: 'intro',
+      title: 'Introduction',
       type: 'string',
     }),
     defineField({

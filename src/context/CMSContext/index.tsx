@@ -1,7 +1,31 @@
 'use client'
 import { createContext, useContext } from 'react'
 
-import { TSkill, TSkillCategory } from '@/typings'
+import { TAbout, THome, TSkill, TSkillCategory } from '@/typings'
+
+/** HOME CONTEXT */
+
+export type HomeContextProps = {
+  home: THome[]
+  setHome: React.Dispatch<React.SetStateAction<THome[]>>
+}
+
+export const HomeContext = createContext<HomeContextProps>({
+  home: [],
+  setHome: () => {},
+})
+
+/** ABOUT CONTEXT */
+
+export type AboutContextProps = {
+  about: TAbout[]
+  setAbout: React.Dispatch<React.SetStateAction<TAbout[]>>
+}
+
+export const AboutContext = createContext<AboutContextProps>({
+  about: [],
+  setAbout: () => {},
+})
 
 /** SKILLS CONTEXT */
 
@@ -27,6 +51,9 @@ export const SkillCategoriesContext = createContext<SkillCategoriesContextProps>
   setSkillCategories: () => {},
 })
 
+/** EXPORT HOOKS */
 
+export const useHomeContext = () => useContext(HomeContext)
+export const useAboutContext = () => useContext(AboutContext)
 export const useSkillsContext = () => useContext(SkillsContext)
 export const useSkillCategoriesContext = () => useContext(SkillCategoriesContext)

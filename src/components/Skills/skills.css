@@ -1,5 +1,4 @@
 .skills-container {
-  width: 50%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,11 +8,44 @@
 
 .skills-item {
   width: 10rem;
+  gap: 0.5rem;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem;
-  font-size: large;
   color: var(--gray3);
+}
+
+.skills-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+}
+
+.skills-icon-wrapper {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+@media (width < 800px) {
+  .root-container {
+    flex-direction: row;
+  }
+
+  .category-container {
+    width: 100%;
+  }
+
+  .skills-icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .skills-item {
+    font-size: small;
+  }
 }

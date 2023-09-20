@@ -6,24 +6,22 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-        }
-      ]
+      name: 'slogan',
+      title: 'Slogan',
+      type: 'array',
+      of: [{type: 'string'}]
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
+      name: 'mission',
+      title: 'Mission',
+      type: 'array',
+      of: [{type: 'string'}]
     }),
+    defineField({
+      name: 'objectives',
+      title: 'Objectives',
+      type: 'array',
+      of: [{type: 'objective'}]
+    })
   ],
 })

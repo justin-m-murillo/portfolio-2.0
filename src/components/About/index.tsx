@@ -3,29 +3,52 @@ import Image from 'next/image'
 
 import aboutpic from '../../../public/milo-and-i.jpg'
 import './about.css'
-import { useWindowDimensions } from '@/hooks/useWindowDimensions'
+import { useAboutContext } from '@/context/CMSContext'
+
+import { FaUsers, FaCubes, FaChartLine } from 'react-icons/fa'
 
 const About = () => {
-  const { width } = useWindowDimensions()
-  //console.log(width) 
+  const { about } = useAboutContext()
+  const iconSize = 32
+  const icons = [
+    <FaUsers size={iconSize} />,
+    <FaCubes size={iconSize} />,
+    <FaChartLine size={iconSize} />,
+  ]
+
   return (
-    <div className='page'>
-      <div className='about-container'>
-        <div className='about-item-container'>
-          <Image 
-            src={aboutpic}
-            alt='A picture of Milo and Justin'
-            width={360}
-          />
-        </div>
-        <div className='about-item-container'>
-          <div className='about-desc-container'>
-            <h1>A little about <span>me</span> ...</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tincidunt vitae semper quis lectus. Pretium viverra suspendisse potenti nullam. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Magna etiam tempor orci eu lobortis elementum nibh. Aliquet nibh praesent tristique magna sit amet purus. Eget est lorem ipsum dolor.</p>
+      <>
+        <div className='module-container col'>
+          <div className='module-element align-center justify-center'>
+            <div className='text-banner align-center justify-center text-align-center'>
+              {about[0].slogan.map((elem, index) => (
+                <h1 key={index}>{elem}</h1>
+              ))}
+            </div>
+            <div className='subtext-banner align-center justify-center text-align-center'>
+              {about[0].mission.map((elem, index) => (
+                <p key={index}>{elem}</p>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        <div className='module-container row'>
+          <div className='module-element align-center'>
+            <div className='objective-wrapper'>
+              {about[0].objectives?.map((objective, index) => (
+                <div key={objective._key} className='objective'>
+                  <div className='objective-heading'>
+                    <span>{icons[index]}</span>
+                    <h2>{objective.title}</h2>
+                  </div>
+                  
+                  <p>{objective.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
   )
 }
 

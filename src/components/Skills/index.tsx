@@ -1,66 +1,73 @@
 import './skills.css'
 import React, { useState } from 'react'
-import Image, { StaticImageData} from 'next/image'
+import Image from 'next/image'
+import { urlFor } from '@/utils/configSanity'
 
 import skillpic from '../../../public/js.png'
+import { useSkillCategoriesContext, useSkillsContext } from '@/context/CMSContext'
 
 type ImageProps = {
-  icon: StaticImageData
+  source: string
+  alt: string
 }
 
-type QuerySkillCategory = {
-  _id: string
-  name: string
-}
-
-const SkillIcon = ({ icon }: ImageProps) => {
+const SkillIcon = ({ source, alt }: ImageProps) => {
   return (
-    <Image 
-      src={icon}
-      alt='icon of skill'
-      width={48}
-      style={{ marginBottom: '2px' }}
-    />
+    <div>
+      <Image
+        src={source}
+        alt={alt}
+        width={0}
+        height={0}
+        sizes='100vw'
+        style={{ marginBottom: '2px', width: '100%', height: 'auto' }}
+      />
+    </div>
   )
 }
 
 const Skills = () => {
-  const fontSkills = [
-    'React JS/Native',
-    'Next.js',
-    'Javascript',
-    'Typescript',
-    'Tailwind CSS',
-    'Framer Motion',
-  ]
+  const { skills } = useSkillsContext()
+  const { skillCategories } = useSkillCategoriesContext()
 
-  const backSkills = [
-    'AWS',
-    'Prisma',
-    'Google Maps API'
-  ]
+  const categories = skillCategories.map(cat => ({
+    id: cat._id,
+    name: cat.name,
+    skills: skills
+      .filter(skill => skill.category._ref === cat._id)
+      .sort((a, b) => a.priority - b.priority)
+  }))
 
   return (
-    <div className='page'>
-      <h1>Frontend</h1>
-      <div className='skills-container'>
-        {fontSkills.map((skill, index) => (
-          <div key={index} className='skills-item'>
-            <SkillIcon icon={skillpic} />
-            <span>{skill}</span>
+    <>
+      <div className='module-container col'>
+        <div className='module-element align-center justify-center'>
+          <div className='text-banner align-center justify-center text-align-center'>
+            <h1>The Right Tools for the Job</h1>
           </div>
-        ))}
-      </div>
-      <h1>Backend / Other</h1>
-      <div className='skills-container'>
-        {backSkills.map((skill, index) => (
-          <div key={index} className='skills-item'>
-            <SkillIcon icon={skillpic} />
-            <span>{skill}</span>
+          <div className='subtext-banner text-align-center'>
+            <p>I can develop high-quality web and mobile applications using frontend and backend technologies. I'm committed to continuous learning to stay current with evolving tech trends.</p>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+      <div className='module-container col'>
+      {categories.map(category => (
+        <div key={category.id} className='module-element align-center'>
+          <h2>{category.name}</h2>
+          <div className='skills-container'>
+            {category.skills.map(skill => (
+              <div key={skill._id} className='skills-item'>
+                <div className='skills-icon-wrapper'>
+                  <SkillIcon source={urlFor(skill.image).url()} alt={skill.image.alt} />
+                </div>
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      </div>
+    </>
   )
 }
 
