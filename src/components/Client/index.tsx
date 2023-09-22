@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { getSections } from '@/static_data'
-import { TAbout, THome, TSection, TSkill, TSkillCategory, TVideo } from '@/typings'
+import { TAbout, THome, TPageInfo, TProject, TSection, TSkill, TSkillCategory } from '@/typings'
 import CMSContextWrapper from '../_subcomponents/CMSContextWrapper'
 import NavBar from '../_subcomponents/NavBar'
 import NavBarSide from '@/components/_subcomponents/NavBarSide'
@@ -9,41 +9,42 @@ import SectionDivider from '../_subcomponents/SectionDivider'
 import { SectionsContext } from '@/context/SectionsContext'
 
 type ClientProps = {
+  pageInfo: TPageInfo[]
   home: THome[]
   about: TAbout[]
   skills: TSkill[]
   skillCategories: TSkillCategory[]
-  video: TVideo[]
+  projects: TProject[]
 }
 
-const Client = ({ home, about, skills, skillCategories, video }: ClientProps) => {
-  //const sections = getSections() as TSection[]
+const Client = ({ pageInfo, home, about, skills, skillCategories, projects }: ClientProps) => {
   const [sections, setSections] = useState<TSection[]>(getSections() as TSection[])
 
   return (
     <CMSContextWrapper
+      pageInfo={pageInfo}
       home={home}
       about={about}
       skillCategories={skillCategories} 
       skills={skills}
-      video={video}
+      projects={projects}
     >
       
       <SectionsContext.Provider value={{ sections, setSections }}>
         <main>
-            {/* NavBar */}
-            <NavBar />
+          {/* NavBar */}
+          <NavBar />
 
-            {/* Sections */}
-            <div className='main-content'>
-              {sections.map(sec => (
-                <section key={sec.id} id={sec.id} ref={sec.ref}>
-                  {sec.component}
-                  {sec.id !== 'home' && <SectionDivider />}
-                </section>
-              ))}
-            </div>
-          </main>
+          {/* Sections */}
+          <div className='main-content'>
+            {sections.map(sec => (
+              <section key={sec.id} id={sec.id} ref={sec.ref}>
+                {sec.component}
+                <SectionDivider />
+              </section>
+            ))}
+          </div>
+        </main>
       </SectionsContext.Provider>
     </CMSContextWrapper>
   )

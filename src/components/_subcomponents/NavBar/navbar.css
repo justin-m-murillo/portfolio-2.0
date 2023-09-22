@@ -8,6 +8,7 @@ nav {
   z-index: 100;
   box-shadow: 0px 2.5px var(--gray8);
   backdrop-filter: blur(3px);
+  background-size: cover;
 }
 
 button {
@@ -18,17 +19,6 @@ button {
   color: white;
   transition: color 300ms ease-out;
 }
-
-button .resume-pdf {
-  padding: 0.5rem 1rem;
-  border: 3px solid var(--blue);
-  transition: 250ms;
-}
-
-button .resume-pdf:hover {
-  background-color: var(--darkblue);
-  transition: 250ms;
-} 
 
 .nav-wrapper {
   width: 70%;

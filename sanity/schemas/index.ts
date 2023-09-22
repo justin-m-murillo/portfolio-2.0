@@ -5,6 +5,15 @@ import project from "./project"
 import skill from "./skill"
 import skillCategory from "./skillCategory"
 import social from "./social"
-import video from "./video"
+import pageInfo from "./pageInfo"
 
-export const schemaTypes = [about, objective, home, project, skill, skillCategory, social, video]
+export const schemaTypes = [
+  about, 
+  objective, 
+  home, 
+  project, 
+  skill, 
+  skillCategory, 
+  social,
+  pageInfo,
+]

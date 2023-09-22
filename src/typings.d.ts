@@ -23,6 +23,12 @@ type TImage = {
   }
 }
 
+export type TPageInfo = TSanityBody & {
+  sectionId: string
+  title: string[]
+  subtitle: string[]
+}
+
 export type THome = TSanityBody & {
   intro: string
   image: TImage
@@ -30,8 +36,6 @@ export type THome = TSanityBody & {
 }
 
 export type TAbout = TSanityBody & {
-  slogan: string[]
-  mission: string[]
   objectives: TObjective[]
 }
 
@@ -55,6 +59,9 @@ export type TSkill = TSanityBody & {
   }
 }
 
-export type TVideo = TSanityBody & {
-  title: string
+export type TProject = TSanityBody & {
+  name: string
+  images: TImage[]
+  videoUrl: string
+  repoUrl: string
 }

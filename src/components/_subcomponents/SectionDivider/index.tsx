@@ -1,10 +1,12 @@
 import React from 'react'
 
-type Props = {}
+type SectionDividerProps = {
+  margin?: string
+}
 
-const SectionDivider = (props: Props) => {
+const SectionDivider = ({ margin='4rem 0' }: SectionDividerProps) => {
   return (
-    <div style={{ margin: '4rem 0' }}/>
+    <div style={{ margin: margin }}/>
   )
 }
 

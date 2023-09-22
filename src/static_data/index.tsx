@@ -5,6 +5,10 @@ import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import { TSection } from '@/typings'
 
+export type SectionProps = {
+  sectionId: string
+}
+
 export const getSections = (): TSection[] => {
   const sections: TSection[] = [
     { index: 0, label: 'Home',     id: 'home',     component: <Home/>,     ref: useRef<HTMLElement>(null) },
@@ -13,10 +17,4 @@ export const getSections = (): TSection[] => {
     { index: 3, label: 'Projects', id: 'projects', component: <Projects/>, ref: useRef<HTMLElement>(null) },
   ]
   return sections
-}
-
-export const getSkills = () => {
-  return [
-    
-  ]
 }

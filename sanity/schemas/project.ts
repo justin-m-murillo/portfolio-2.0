@@ -11,16 +11,29 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-        }
-      ]
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [{
+        type: 'image',
+        fields: [
+          {
+            name: 'alt',
+            type: 'string',
+            title: 'Alternative Text',
+          }
+        ]
+      }]
     }),
+    defineField({
+      name: 'videoUrl',
+      title: 'Video URL',
+      type: 'string',
+    }),
+    defineField({
+      name: 'repoUrl',
+      title: 'Repo URL',
+      type: 'string',
+    })
   ],
 })

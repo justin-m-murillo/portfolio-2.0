@@ -15,6 +15,7 @@ const FacePortrait = ({ src }: FacePortraitProps) => {
       height={size}
       alt='A portrait image of Justin Murillo'
       className='face-portrait'
+      priority
     />
   )
 }

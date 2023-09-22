@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { urlFor } from '@/utils/configSanity'
 
 import skillpic from '../../../public/js.png'
-import { useSkillCategoriesContext, useSkillsContext } from '@/context/CMSContext'
+import { usePageInfoContext, useSkillCategoriesContext, useSkillsContext } from '@/context/CMSContext'
 
 type ImageProps = {
   source: string
@@ -29,6 +29,8 @@ const SkillIcon = ({ source, alt }: ImageProps) => {
 const Skills = () => {
   const { skills } = useSkillsContext()
   const { skillCategories } = useSkillCategoriesContext()
+  const { pageInfo } = usePageInfoContext()
+  const { title, subtitle } = pageInfo.filter(info => info.sectionId === 'skills')[0]
 
   const categories = skillCategories.map(cat => ({
     id: cat._id,
@@ -41,18 +43,22 @@ const Skills = () => {
   return (
     <>
       <div className='module-container col'>
-        <div className='module-element align-center justify-center'>
+        <div className='module-element col align-center justify-center'>
           <div className='text-banner align-center justify-center text-align-center'>
-            <h1>The Right Tools for the Job</h1>
+            {title.map((elem, index) => (
+              <h1 key={index}>{elem}</h1>
+            ))}
           </div>
           <div className='subtext-banner text-align-center'>
-            <p>I can develop high-quality web and mobile applications using frontend and backend technologies. I'm committed to continuous learning to stay current with evolving tech trends.</p>
+            {subtitle.map((elem, index) => (
+              <p key={index}>{elem}</p>
+            ))}          
           </div>
         </div>
       </div>
       <div className='module-container col'>
       {categories.map(category => (
-        <div key={category.id} className='module-element align-center'>
+        <div key={category.id} className='module-element col align-center'>
           <h2>{category.name}</h2>
           <div className='skills-container'>
             {category.skills.map(skill => (

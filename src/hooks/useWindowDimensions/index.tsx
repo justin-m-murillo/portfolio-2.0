@@ -6,7 +6,10 @@ const getWindowDimensions = () => {
   return { width, height }
 }
 
-export const useWindowDimensions = () => {
+export const useWindowDimensions = ():{
+  width: number;
+  height: number;
+} => {
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
