@@ -1,40 +1,37 @@
 import './projModule.css'
 import { TImage } from '@/typings'
-import React, { useState } from 'react'
+import React from 'react'
 
-import { useFireVideos } from '@/hooks/useFireStorage'
 import ProjectDetails from '../ProjectDetails'
-import ProjectVideo from '../ProjectVideo'
+import ProjectImg from '../ProjectImg'
+import ErrorMessage from '../ErrorMessage'
+import ProjectImgDisplay from '../ProjectImgDisplay'
 
 type ProjectModuleProps = {
   name: string
   images: TImage[]
-  videoUrl: string
+  demoUrl: string
   repoUrl: string
   flip?: boolean
 }
 
-const ProjectModule = ({ name, images, videoUrl, repoUrl, flip=false }: ProjectModuleProps) => {
-  const [showMedia, setShowMedia] = useState<boolean>(false)
-  const { downloadUrl } = useFireVideos(videoUrl)
-
+const ProjectModule = ({ name, images, demoUrl, repoUrl, flip=false }: ProjectModuleProps) => {
   return (
     <div className='module-container row'>
       <div className='module-container row proj-module-container'>
-        <ProjectDetails 
-          name={name}
-          repoUrl={repoUrl}
-          showMedia={showMedia}
-          setShowMedia={setShowMedia}
-          className={flip ? 'flex-flip-2' : undefined}
-        />
-        <ProjectVideo 
-          images={images}
-          downloadUrl={downloadUrl}
-          showMedia={showMedia}
-          className={flip ? 'flex-flip-1' : undefined}
-        />
-      </div> 
+        <div className={`module-element col ${flip ? 'flex-flip-2' : null}`}>
+          <ProjectDetails 
+            name={name}
+            demoUrl={demoUrl}
+            repoUrl={repoUrl}
+          />
+        </div>
+        <div className={`module-element ${flip ? 'flex-flip-1' : null}`}>
+          <ProjectImgDisplay 
+            images={images}
+          />
+        </div>
+      </div>
     </div>
   )
 }

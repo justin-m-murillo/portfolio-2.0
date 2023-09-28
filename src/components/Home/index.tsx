@@ -12,7 +12,7 @@ const Home = () => {
   const projectSection = sections.filter(sec => sec.id === 'projects')[0]
 
   const handleScrollToProjects = () => {
-    projectSection?.ref?.current?.scrollIntoView({ behavior: 'smooth' })
+    projectSection?.ref?.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })
   }
 
   return (

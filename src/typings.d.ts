@@ -62,6 +62,6 @@ export type TSkill = TSanityBody & {
 export type TProject = TSanityBody & {
   name: string
   images: TImage[]
-  videoUrl: string
+  demoUrl: string
   repoUrl: string
 }

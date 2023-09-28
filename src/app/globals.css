@@ -47,7 +47,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  background: var(--gray7);
+  background: var(--gray8);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -160,3 +160,13 @@ h2 {
     font-size: 40px;
   }
 }
+
+@media (width < 600px) {
+  .module-element {
+    padding: 1rem 0;
+  }
+
+  .subtext-banner p {
+    padding: 0 1rem;
+  }
+} 

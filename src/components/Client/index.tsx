@@ -39,8 +39,8 @@ const Client = ({ pageInfo, home, about, skills, skillCategories, projects }: Cl
           <div className='main-content'>
             {sections.map(sec => (
               <section key={sec.id} id={sec.id} ref={sec.ref}>
-                {sec.component}
                 <SectionDivider />
+                {sec.component}
               </section>
             ))}
           </div>

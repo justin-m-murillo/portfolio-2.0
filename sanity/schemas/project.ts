@@ -26,8 +26,8 @@ export default defineType({
       }]
     }),
     defineField({
-      name: 'videoUrl',
-      title: 'Video URL',
+      name: 'demoUrl',
+      title: 'Demo URL',
       type: 'string',
     }),
     defineField({

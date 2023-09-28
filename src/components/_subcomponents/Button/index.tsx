@@ -29,7 +29,7 @@ export const Button = ({ title, onClick, border=false, }: ButtonProps) => {
 
 export const ButtonLink = ({ title, url, border=false, }: ButtonLinkProps) => {
   return (
-    <a href={url} className={`btn`}>{title}</a>
+    <a target='_blank' href={url} className={`btn ${border && 'btn-border'}`}>{title}</a>
   )
 }
 
