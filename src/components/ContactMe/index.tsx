@@ -19,9 +19,9 @@ const ContactMe = () => {
   const iconSize = 32;
 
   const icons = [
-    <MdOutlineEmail size={iconSize} />,
-    <FaGithub size={iconSize} />,
-    <FaLinkedin size={iconSize} />,
+    <MdOutlineEmail key={'icon-1'} size={iconSize} />,
+    <FaGithub key={'icon-2'} size={iconSize} />,
+    <FaLinkedin key={'icon-3'} size={iconSize} />,
   ]
 
   const { register, handleSubmit } = useForm<Inputs>();

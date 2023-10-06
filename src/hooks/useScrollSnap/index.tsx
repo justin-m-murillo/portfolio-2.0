@@ -30,7 +30,7 @@ export const useScrollSnap = ({ sections, initialIndex=0, delay=3e2 }: UseScroll
       canScroll.current = true
     }, delay)
     return () => clearTimeout(timer)
-  }, [scroll, index])
+  }, [scroll, index, delay, handleWheel, sections]);
 
   return { setScroll, index, setIndex, canScroll }
 }

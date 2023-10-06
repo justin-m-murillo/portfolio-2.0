@@ -4,7 +4,8 @@ import './home.css'
 import { useCoreContext } from '@/context/CMSContext'
 import { urlFor } from '@/utils/configSanity'
 import { useSectionsContext } from '@/context/SectionsContext'
-import { Button, ButtonRow } from '../_subcomponents/Button'
+import { ButtonRow, Button } from '../_subcomponents/Button'
+
 
 const Home = () => {
   const { home } = useCoreContext();

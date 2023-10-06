@@ -10,9 +10,9 @@ const About = () => {
 
   const iconSize = 32
   const icons = [
-    <FaUsers size={iconSize} />,
-    <FaCubes size={iconSize} />,
-    <FaChartLine size={iconSize} />,
+    <FaUsers key={'icon-1'} size={iconSize} />,
+    <FaCubes key={'icon-2'} size={iconSize} />,
+    <FaChartLine key={'icon-3'} size={iconSize} />,
   ]
 
   return (
