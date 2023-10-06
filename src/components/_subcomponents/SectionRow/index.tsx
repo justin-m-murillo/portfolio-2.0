@@ -1,4 +1,3 @@
-import { useScrollSnap, UseScrollSnapProps } from '@/hooks/useScrollSnap'
 import { SectionProps } from '@/props/section_props'
 import './section-row.css'
 import React from 'react'

@@ -38,7 +38,7 @@ const ContactMe = () => {
           <h1>Contact Me</h1>
         </div>
         <div className='subtext-banner align-center justify-center'>
-          <p>Like what you see? <span className='emphasize'>Let's talk.</span></p>
+          <p>Like what you see? <span className='emphasize'>Let&apos;s talk.</span></p>
         </div>
       </div>
       <div className='module-element col align-center justify-center'>
