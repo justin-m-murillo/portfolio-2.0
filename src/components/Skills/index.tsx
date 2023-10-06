@@ -1,44 +1,36 @@
 import './skills.css'
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { urlFor } from '@/utils/configSanity'
 
-import skillpic from '../../../public/js.png'
-import { usePageInfoContext, useSkillCategoriesContext, useSkillsContext } from '@/context/CMSContext'
+import { useCoreContext, } from '@/context/CMSContext'
 
 type ImageProps = {
   source: string
   alt: string
+  url: string
 }
 
-const SkillIcon = ({ source, alt }: ImageProps) => {
+const SkillIcon = ({ source, alt, url }: ImageProps) => {
   return (
     <div>
-      <Image
-        src={source}
-        alt={alt}
-        width={0}
-        height={0}
-        sizes='100vw'
-        style={{ marginBottom: '2px', width: '100%', height: 'auto' }}
-      />
+      <a target='_blank' href={url}>
+        <Image
+          src={source}
+          alt={alt}
+          width={0}
+          height={0}
+          sizes='100vw'
+          style={{ marginBottom: '2px', width: '100%', height: 'auto' }}
+        />
+      </a>
     </div>
   )
 }
 
 const Skills = () => {
-  const { skills } = useSkillsContext()
-  const { skillCategories } = useSkillCategoriesContext()
-  const { pageInfo } = usePageInfoContext()
-  const { title, subtitle } = pageInfo.filter(info => info.sectionId === 'skills')[0]
-
-  const categories = skillCategories.map(cat => ({
-    id: cat._id,
-    name: cat.name,
-    skills: skills
-      .filter(skill => skill.category._ref === cat._id)
-      .sort((a, b) => a.priority - b.priority)
-  }))
+  const { skillSets, pageInfo } = useCoreContext();
+  const { title, subtitle } = pageInfo.filter(info => info.sectionId === 'skills')[0];
 
   return (
     <>
@@ -57,21 +49,21 @@ const Skills = () => {
         </div>
       </div>
       <div className='module-container col'>
-      {categories.map(category => (
-        <div key={category.id} className='module-element col align-center'>
-          <h2>{category.name}</h2>
-          <div className='skills-container'>
-            {category.skills.map(skill => (
-              <div key={skill._id} className='skills-item'>
-                <div className='skills-icon-wrapper'>
-                  <SkillIcon source={urlFor(skill.image).url()} alt={skill.image.alt} />
+        {skillSets.map(skillSet => (
+          <div key={skillSet._id} className='module-element col align-center'>
+            <h2>{skillSet.name}</h2>
+            <div className='skills-container'>
+              {skillSet.skills.map(skill => (
+                <div key={skill._key} className='skills-item'>
+                  <div className='skills-icon-wrapper'>
+                    <SkillIcon source={urlFor(skill.image).url()} alt={skill.image.alt} url={skill.refUrl} />
+                  </div>
+                  <span>{skill.name}</span>
                 </div>
-                <span>{skill.name}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </>
   )

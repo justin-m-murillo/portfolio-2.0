@@ -9,19 +9,21 @@ import ProjectImgDisplay from '../ProjectImgDisplay'
 
 type ProjectModuleProps = {
   name: string
+  description: string[]
   images: TImage[]
   demoUrl: string
   repoUrl: string
   flip?: boolean
 }
 
-const ProjectModule = ({ name, images, demoUrl, repoUrl, flip=false }: ProjectModuleProps) => {
+const ProjectModule = ({ name, description, images, demoUrl, repoUrl, flip=false }: ProjectModuleProps) => {
   return (
     <div className='module-container row'>
       <div className='module-container row proj-module-container'>
         <div className={`module-element col ${flip ? 'flex-flip-2' : null}`}>
           <ProjectDetails 
             name={name}
+            description={description}
             demoUrl={demoUrl}
             repoUrl={repoUrl}
           />

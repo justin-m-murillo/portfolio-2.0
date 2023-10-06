@@ -1,7 +1,6 @@
 'use client'
-import { createContext, useContext } from 'react'
-
-import { TAbout, THome, TPageInfo, TProject, TSkill, TSkillCategory } from '@/typings'
+import { SetStateAction, createContext, useContext } from 'react'
+import { TAbout, TContactInfoList, THome, TPageInfo, TProject, TProjectList, TSkillSet } from '@/typings'
 
 /** PAGE INFO CONTEXT */
 export type PageInfoContextProps = {
@@ -9,21 +8,11 @@ export type PageInfoContextProps = {
   setPageInfo: React.Dispatch<React.SetStateAction<TPageInfo[]>>
 }
 
-export const PageInfoContext = createContext<PageInfoContextProps>({
-  pageInfo: [],
-  setPageInfo: () => {},
-})
-
 /** HOME CONTEXT */
 export type HomeContextProps = {
   home: THome[]
   setHome: React.Dispatch<React.SetStateAction<THome[]>>
 }
-
-export const HomeContext = createContext<HomeContextProps>({
-  home: [],
-  setHome: () => {},
-})
 
 /** ABOUT CONTEXT */
 export type AboutContextProps = {
@@ -31,49 +20,52 @@ export type AboutContextProps = {
   setAbout: React.Dispatch<React.SetStateAction<TAbout[]>>
 }
 
-export const AboutContext = createContext<AboutContextProps>({
-  about: [],
-  setAbout: () => {},
-})
-
-/** SKILLS CONTEXT */
-export type SkillsContextProps = {
-  skills: TSkill[]
-  setSkills: React.Dispatch<React.SetStateAction<TSkill[]>>
+/** SKILL SET */
+export type SkillSetContextProps = {
+  skillSets: TSkillSet[],
+  setSkillSets: React.Dispatch<SetStateAction<TSkillSet[]>>
 }
 
-export const SkillsContext = createContext<SkillsContextProps>({
-  skills: [],
-  setSkills: () => {},
-})
-
-/** SKILL CATEGORIES */
-export type SkillCategoriesContextProps = {
-  skillCategories: TSkillCategory[]
-  setSkillCategories: React.Dispatch<React.SetStateAction<TSkillCategory[]>>
-}
-
-export const SkillCategoriesContext = createContext<SkillCategoriesContextProps>({
-  skillCategories: [],
-  setSkillCategories: () => {},
-})
-
-/** VIDEO */
+/** PROJECT */
 export type ProjectsContextProps = {
   projects: TProject[]
   setProjects: React.Dispatch<React.SetStateAction<TProject[]>>
 }
 
-export const ProjectsContext = createContext<ProjectsContextProps>({
-  projects: [],
-  setProjects: () => {},
+/** PROJECT LIST */
+export type ProjectListContextProps = {
+  projectLists: TProjectList[],
+  setProjectLists: React.Dispatch<React.SetStateAction<TProjectList[]>>
+}
+
+export type TContactInfoListContextProps = {
+  contactInfoLists: TContactInfoList[],
+  setContactInfoLists: React.Dispatch<React.SetStateAction<TContactInfoList[]>>
+}
+
+/** CORE CONTEXT */
+export type CoreContextProps = 
+  PageInfoContextProps&
+  HomeContextProps& 
+  AboutContextProps&
+  SkillSetContextProps&
+  ProjectListContextProps&
+  TContactInfoListContextProps
+
+export const CoreContext = createContext<CoreContextProps>({
+  pageInfo: [],
+  setPageInfo: () => {},
+  home: [],
+  setHome: () => {},
+  about: [],
+  setAbout: () => {},
+  skillSets: [],
+  setSkillSets: () => {},
+  projectLists: [],
+  setProjectLists: () => {},
+  contactInfoLists: [],
+  setContactInfoLists: () => {},
 })
 
 /** EXPORT HOOKS */
-
-export const usePageInfoContext        = () => useContext(PageInfoContext)
-export const useHomeContext            = () => useContext(HomeContext)
-export const useAboutContext           = () => useContext(AboutContext)
-export const useSkillsContext          = () => useContext(SkillsContext)
-export const useSkillCategoriesContext = () => useContext(SkillCategoriesContext)
-export const useProjectsContext        = () => useContext(ProjectsContext)
+export const useCoreContext = () => useContext(CoreContext);

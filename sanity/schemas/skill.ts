@@ -11,10 +11,9 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'reference',
-      to: [{type: 'skillCategory'}]
+      name: 'refUrl',
+      title: 'Reference Url',
+      type: 'string'
     }),
     defineField({
       name: 'image',
@@ -27,11 +26,6 @@ export default defineType({
           title: 'Alternative Text',
         }
       ]
-    }),
-    defineField({
-      name: 'priority',
-      title: 'Priority',
-      type: 'number'
     })
   ],
 })

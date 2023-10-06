@@ -1,12 +1,12 @@
 import './projects.css'
 import React from 'react'
-import { usePageInfoContext, useProjectsContext } from '@/context/CMSContext'
+import { useCoreContext } from '@/context/CMSContext'
 import SectionDivider from '../_subcomponents/SectionDivider'
 import ProjectModule from '../_subcomponents/ProjectModule'
 
 const Projects = () => {
-  const { projects } = useProjectsContext()
-  const { pageInfo } = usePageInfoContext()
+  const { projectLists, pageInfo } = useCoreContext();
+  const { projects } = projectLists[0];
   const { title, subtitle } = pageInfo.filter(info => info.sectionId === 'projects')[0]
 
   return (
@@ -25,10 +25,10 @@ const Projects = () => {
       </div>
       <SectionDivider />
       {projects.map((project, index) => (
-        <div key={project._id} className='project-modules'>
+        <div key={index} className='project-modules'>
           {index % 2 !== 0 
-            ? <ProjectModule key={project._id} {...project} flip/>
-            : <ProjectModule key={project._id} {...project} />
+            ? <ProjectModule {...project} flip/>
+            : <ProjectModule {...project} />
           }
           <SectionDivider />
         </div>

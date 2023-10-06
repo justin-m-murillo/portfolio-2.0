@@ -1,0 +1,64 @@
+.emphasize {
+  text-decoration: underline var(--blue);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.contact-info-item span {
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 4px;
+}
+
+.form-input {
+  padding: 1rem 0.5rem;
+  outline: none;
+  background-color: var(--gray6);
+  color: var(--gray3);
+  border: none;
+  border-bottom: 2px solid var(--gray4);
+  border-radius: 5px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button {
+  padding: 1rem;
+  background-color: var(--blue);
+  border-radius: 4px;
+  font-size: large;
+}
+
+form button:hover {
+  opacity: 0.8;
+  transition: 300ms;
+}

@@ -1,31 +1,27 @@
 import { TImage } from '@/typings'
-import React, { useState } from 'react'
+import React from 'react'
 import ErrorMessage from '../ErrorMessage';
-import ProjectImg from '../ProjectImg';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
+import ImageRow from '../ImageRow';
+import ImageCarousel from '../ImageCarousel';
 
 type ProjectImgDisplayProps = {
   images: TImage[];
 }
 
 const ProjectImgDisplay = ({ images }: ProjectImgDisplayProps) => {
-  const [viewIndex, setViewIndex] = useState<number>(0);
+  const { width } = useWindowDimensions();
 
   return (
-    <ul className={`img-display-wrapper`}>
-      {/* {images && <ProjectImg key={images[0].toString()} image={images[0]} />} */}
+    <div className='img-display-wrapper'>
       {images?.length
-        ? images.map((img, index) => (
-          <ProjectImg 
-            key={index} 
-            image={img} 
-            imgIndex={index} 
-            viewIndex={viewIndex}
-            setViewIndex={setViewIndex}
-          />
-        ))
+        ? <ImageRow images={images} />
+        // ? width < 1100
+        //   ? <ImageCarousel images={images} />
+        //   : <ImageRow images={images} />
         : <ErrorMessage message='Images not available' />
       }
-    </ul>
+    </div>
   )
 }
 

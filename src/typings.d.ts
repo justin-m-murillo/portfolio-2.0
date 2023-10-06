@@ -52,16 +52,33 @@ export type TSkillCategory = TSanityBody & {
 export type TSkill = TSanityBody & {
   name: string
   image: TImage
-  priority: number
-  category: {
-    _ref: string
-    _type: 'reference'
-  }
+  refUrl: string
+  _key: string
+}
+
+export type TSkillSet = TSanityBody & {
+  name: string
+  skills: TSkill[]
 }
 
 export type TProject = TSanityBody & {
   name: string
+  description: string[]
   images: TImage[]
   demoUrl: string
   repoUrl: string
+}
+
+export type TProjectList = TSanityBody & {
+  name: string
+  projects: TProject[]
+}
+
+export type TContactInfo = TSanityBody & {
+  name: string
+  value: string
+}
+
+export type TContactInfoList = TSanityBody & {
+  contacts: TContactInfo[]
 }

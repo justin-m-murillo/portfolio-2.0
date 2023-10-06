@@ -11,7 +11,6 @@ const NetworkIcon = ({ url, network }: NetworkIconProps) => {
     <SocialIcon 
       url={url}
       network={network}
-      className='icon'
     />
   )
 }

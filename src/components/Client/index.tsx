@@ -1,23 +1,23 @@
 'use client'
 import React, { useState } from 'react'
 import { getSections } from '@/static_data'
-import { TAbout, THome, TPageInfo, TProject, TSection, TSkill, TSkillCategory } from '@/typings'
+import { TAbout, TContactInfoList, THome, TPageInfo, TProjectList, TSection, TSkillSet } from '@/typings'
 import CMSContextWrapper from '../_subcomponents/CMSContextWrapper'
 import NavBar from '../_subcomponents/NavBar'
-import NavBarSide from '@/components/_subcomponents/NavBarSide'
 import SectionDivider from '../_subcomponents/SectionDivider'
 import { SectionsContext } from '@/context/SectionsContext'
+import Footer from '../Footer'
 
 type ClientProps = {
   pageInfo: TPageInfo[]
   home: THome[]
   about: TAbout[]
-  skills: TSkill[]
-  skillCategories: TSkillCategory[]
-  projects: TProject[]
+  skillSets: TSkillSet[]
+  projectLists: TProjectList[]
+  contactInfoLists: TContactInfoList[]
 }
 
-const Client = ({ pageInfo, home, about, skills, skillCategories, projects }: ClientProps) => {
+const Client = ({ pageInfo, home, about, skillSets, projectLists, contactInfoLists }: ClientProps) => {
   const [sections, setSections] = useState<TSection[]>(getSections() as TSection[])
 
   return (
@@ -25,26 +25,31 @@ const Client = ({ pageInfo, home, about, skills, skillCategories, projects }: Cl
       pageInfo={pageInfo}
       home={home}
       about={about}
-      skillCategories={skillCategories} 
-      skills={skills}
-      projects={projects}
+      skillSets={skillSets}
+      projectLists={projectLists}
+      contactInfoLists={contactInfoLists}
     >
       
       <SectionsContext.Provider value={{ sections, setSections }}>
-        <main>
+        <header>
           {/* NavBar */}
           <NavBar />
-
-          {/* Sections */}
-          <div className='main-content'>
-            {sections.map(sec => (
-              <section key={sec.id} id={sec.id} ref={sec.ref}>
-                <SectionDivider />
-                {sec.component}
-              </section>
-            ))}
-          </div>
-        </main>
+        </header>
+          <main>
+            {/* Sections */}
+            <div className='main-content'>
+              {sections.map(sec => (
+                <section key={sec.id} id={sec.id} ref={sec.ref}>
+                  <SectionDivider />
+                  {sec.component}
+                </section>
+              ))}
+              <SectionDivider />
+            </div>
+          </main>
+        <footer>
+          <Footer />
+        </footer>
       </SectionsContext.Provider>
     </CMSContextWrapper>
   )

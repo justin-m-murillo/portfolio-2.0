@@ -1,12 +1,11 @@
 import React from 'react'
 import './about.css'
-import { useAboutContext, usePageInfoContext } from '@/context/CMSContext'
+import { useCoreContext, } from '@/context/CMSContext'
 
 import { FaUsers, FaCubes, FaChartLine } from 'react-icons/fa'
 
 const About = () => {
-  const { about } = useAboutContext()
-  const { pageInfo } = usePageInfoContext()
+  const { about, pageInfo } = useCoreContext();
   const { title, subtitle } = pageInfo.filter(info => info.sectionId === 'about')[0]
 
   const iconSize = 32

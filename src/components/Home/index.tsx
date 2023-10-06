@@ -1,19 +1,19 @@
 import React from 'react'
 import FacePortrait from '../_subcomponents/FacePortrait'
 import './home.css'
-import { useHomeContext } from '@/context/CMSContext'
+import { useCoreContext } from '@/context/CMSContext'
 import { urlFor } from '@/utils/configSanity'
 import { useSectionsContext } from '@/context/SectionsContext'
 import { Button, ButtonRow } from '../_subcomponents/Button'
 
 const Home = () => {
-  const { home } = useHomeContext()
-  const { sections } = useSectionsContext()
-  const projectSection = sections.filter(sec => sec.id === 'projects')[0]
+  const { home } = useCoreContext();
+  const { sections } = useSectionsContext();
+  const projectSection = sections.filter(sec => sec.id === 'projects')[0];
 
   const handleScrollToProjects = () => {
     projectSection?.ref?.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })
-  }
+  };
 
   return (
     <div className='module-container col align-center justify-center'>

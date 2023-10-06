@@ -1,19 +1,25 @@
 import React from 'react'
-import { ButtonRow, Button, ButtonLink } from '../Button'
+import { ButtonRow, ButtonLink } from '../Button'
 
 type ProjectDetailsProps = {
   name: string
+  description: string[]
   demoUrl: string
   repoUrl: string
 }
 
-const ProjectDetails = ({ name, demoUrl, repoUrl }: ProjectDetailsProps) => {
+const ProjectDetails = ({ name, description, demoUrl, repoUrl }: ProjectDetailsProps) => {
+  console.log(name, description);
   return (
     <div className='project-details text-banner'>
       <h1>{name}</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt id aliquet risus feugiat in. Integer quis auctor elit sed vulputate mi sit amet mauris. Fringilla est ullamcorper eget nulla facilisi etiam dignissim. Diam quam nulla porttitor massa id neque aliquam.</p>
+      <div className='description-wrapper'>
+        {description.map((desc, index) => (
+          <p key={index}>{desc}</p>
+        ))}
+      </div>
       <ButtonRow className='proj-btn-row'>
-        <ButtonLink title='Live Demo' url={demoUrl} border />
+        {demoUrl && <ButtonLink title='Live Demo' url={demoUrl} border />}       
         <ButtonLink title='GitHub Repo' url={repoUrl} />
       </ButtonRow>
     </div>

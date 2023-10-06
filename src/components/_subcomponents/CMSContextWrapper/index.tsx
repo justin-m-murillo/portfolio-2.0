@@ -1,14 +1,14 @@
-import { TAbout, THome, TPageInfo, TProject, TSkill, TSkillCategory, } from '@/typings'
-import { SkillsContext, SkillCategoriesContext, AboutContext, HomeContext, ProjectsContext, PageInfoContext } from '@/context/CMSContext'
+import { TAbout, TContactInfoList, THome, TPageInfo, TProjectList, TSkillSet, } from '@/typings'
+import { CoreContext } from '@/context/CMSContext'
 import React, { ReactNode, useState } from 'react'
 
 type ContextWrapperProps = {
   pageInfo: TPageInfo[]
   home: THome[]
   about: TAbout[]
-  skills: TSkill[]
-  skillCategories: TSkillCategory[]
-  projects: TProject[]
+  skillSets: TSkillSet[]
+  projectLists: TProjectList[]
+  contactInfoLists: TContactInfoList[]
   children: ReactNode
 }
 
@@ -16,24 +16,21 @@ const CMSContextWrapper = (props: ContextWrapperProps) => {
   const [pageInfo, setPageInfo] = useState<TPageInfo[]>(props.pageInfo)
   const [home, setHome] = useState<THome[]>(props.home)
   const [about, setAbout] = useState<TAbout[]>(props.about)
-  const [skills, setSkills] = useState<TSkill[]>(props.skills)
-  const [skillCategories, setSkillCategories] = useState<TSkillCategory[]>(props.skillCategories)
-  const [projects, setProjects] = useState<TProject[]>(props.projects)
+  const [skillSets, setSkillSets] = useState<TSkillSet[]>(props.skillSets);
+  const [projectLists, setProjectLists] = useState<TProjectList[]>(props.projectLists)
+  const [contactInfoLists, setContactInfoLists] = useState<TContactInfoList[]>(props.contactInfoLists)
 
   return (
-    <PageInfoContext.Provider value={{ pageInfo, setPageInfo }}>
-      <HomeContext.Provider value={{ home, setHome }}>
-        <AboutContext.Provider value={{ about, setAbout }}>
-          <SkillCategoriesContext.Provider value={{ skillCategories, setSkillCategories }}>
-            <SkillsContext.Provider value={{ skills, setSkills }}>
-              <ProjectsContext.Provider value={{ projects, setProjects }}>
-                { props.children }
-              </ProjectsContext.Provider>
-            </SkillsContext.Provider>
-          </SkillCategoriesContext.Provider>
-        </AboutContext.Provider>
-      </HomeContext.Provider>
-    </PageInfoContext.Provider>
+    <CoreContext.Provider value={{
+      pageInfo, setPageInfo,
+      home, setHome,
+      about, setAbout,
+      skillSets, setSkillSets,
+      projectLists, setProjectLists,
+      contactInfoLists, setContactInfoLists
+    }}>
+      { props.children }
+    </CoreContext.Provider>
   )
 }
 
