@@ -1,12 +1,16 @@
 'use client'
-import React, { useState } from 'react'
-import { getSections } from '@/static_data'
+import React, { useRef } from 'react'
 import { TAbout, TContactInfoList, THome, TPageInfo, TProjectList, TSection, TSkillSet } from '@/typings'
 import CMSContextWrapper from '../_subcomponents/CMSContextWrapper'
 import NavBar from '../_subcomponents/NavBar'
 import SectionDivider from '../_subcomponents/SectionDivider'
 import { SectionsContext } from '@/context/SectionsContext'
 import Footer from '../Footer'
+import About from '../About'
+import ContactMe from '../ContactMe'
+import Home from '../Home'
+import Projects from '../Projects'
+import Skills from '../Skills'
 
 type ClientProps = {
   pageInfo: TPageInfo[]
@@ -18,7 +22,13 @@ type ClientProps = {
 }
 
 const Client = ({ pageInfo, home, about, skillSets, projectLists, contactInfoLists }: ClientProps) => {
-  const [sections, setSections] = useState<TSection[]>(getSections() as TSection[])
+  const sections: TSection[] = [
+    { index: 0, label: 'Home',       id: 'home',      component: <Home/>,       ref: useRef<HTMLElement>(null) },
+    { index: 1, label: 'Mission',    id: 'mission',   component: <About/>,      ref: useRef<HTMLElement>(null) },
+    { index: 2, label: 'Skills',     id: 'skills',    component: <Skills/>,     ref: useRef<HTMLElement>(null) },
+    { index: 3, label: 'Projects',   id: 'projects',  component: <Projects/>,   ref: useRef<HTMLElement>(null) },
+    { index: 4, label: 'Contact Me', id: 'contactme', component: <ContactMe />, ref: useRef<HTMLElement>(null)}
+  ];
 
   return (
     <CMSContextWrapper
@@ -30,7 +40,7 @@ const Client = ({ pageInfo, home, about, skillSets, projectLists, contactInfoLis
       contactInfoLists={contactInfoLists}
     >
       
-      <SectionsContext.Provider value={{ sections, setSections }}>
+      <SectionsContext.Provider value={{ sections }}>
         <header>
           {/* NavBar */}
           <NavBar />

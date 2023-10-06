@@ -9,7 +9,6 @@ type ProjectDetailsProps = {
 }
 
 const ProjectDetails = ({ name, description, demoUrl, repoUrl }: ProjectDetailsProps) => {
-  console.log(name, description);
   return (
     <div className='project-details text-banner'>
       <h1>{name}</h1>

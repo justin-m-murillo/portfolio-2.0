@@ -1,14 +1,10 @@
-import React, { useState, } from 'react'
-import { MdOutlineEmail } from 'react-icons/md'
+import React from 'react'
 
 import './navbar.css'
 import NetworkIcon from '../NetworkIcon'
-import { Button } from '../Button'
 import { useSectionsContext } from '@/context/SectionsContext'
 
-type NavbarProps = {}
-
-const NavBar = (props: NavbarProps) => {
+const NavBar = () => {
   const { sections } = useSectionsContext();
   const contactMeSection = sections.filter(sec => sec.id === 'contactme')[0];
 
