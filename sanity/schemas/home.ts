@@ -26,10 +26,9 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'typeText',
-      title: 'TypeText',
-      type: 'array',
-      of: [{type: 'string'}]
+      name: 'resumeUrl',
+      title: 'Resume Url',
+      type: 'string',
     }),
   ],
 })

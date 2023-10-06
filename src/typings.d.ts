@@ -32,7 +32,7 @@ export type TPageInfo = TSanityBody & {
 export type THome = TSanityBody & {
   intro: string
   image: TImage
-  typeText: string[]
+  resumeUrl: string
 }
 
 export type TAbout = TSanityBody & {
