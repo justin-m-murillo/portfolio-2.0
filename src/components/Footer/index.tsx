@@ -1,6 +1,6 @@
 import './footer.css'
 import React from 'react'
-import vercel from '../../../public/vercel-logotype-dark.png'
+import vercel from '../../../public/vercel-logotype-light.svg'
 import Image from 'next/image'
 
 const Footer = () => {
