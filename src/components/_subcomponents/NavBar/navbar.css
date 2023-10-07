@@ -47,7 +47,6 @@ button {
 }
 
 .contact-me-wrapper:hover {
-  opacity: 0.8;
-  background-color: var(--gray7);
+  opacity: 1;
   transition: 300ms;
 }
