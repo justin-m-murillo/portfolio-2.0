@@ -6,7 +6,6 @@ import { urlFor } from '@/utils/configSanity'
 import { useSectionsContext } from '@/context/SectionsContext'
 import { ButtonRow, Button, ButtonLink } from '../_subcomponents/Button'
 
-
 const Home = () => {
   const { home } = useCoreContext();
   const { sections } = useSectionsContext();

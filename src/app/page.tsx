@@ -2,6 +2,8 @@ import { sanityClient } from "@/utils/configSanity"
 import Client from "@/components/Client"
 import { TAbout, TContactInfoList, THome, TPageInfo, TProjectList, TSkillSet } from "@/typings";
 
+export const revalidate = 60;
+
 const getData = async (query: string) => {
   const data = await sanityClient.fetch(`*[_type == '${query}']`);
   return data;
