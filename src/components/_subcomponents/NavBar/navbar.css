@@ -30,23 +30,3 @@ button {
 .nav-wrapper div {
   display: flex;
 }
-
-.contact-me-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray3);
-  font-weight: bold;
-  width: auto;
-  height: auto;
-  border: 2px var(--gray6) solid;
-  border-radius: 8px;
-  padding: 0 1rem;
-  background-color: var(--gray7);
-  opacity: 0.8;
-}
-
-.contact-me-wrapper:hover {
-  opacity: 1;
-  transition: 300ms;
-}

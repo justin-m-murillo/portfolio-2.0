@@ -5,6 +5,7 @@ import { useCoreContext } from '@/context/CMSContext'
 import { urlFor } from '@/utils/configSanity'
 import { useSectionsContext } from '@/context/SectionsContext'
 import { ButtonRow, Button, ButtonLink } from '../_subcomponents/Button'
+import ContactMeBtn from '../_subcomponents/ContactMeBtn'
 
 const Home = () => {
   const { home } = useCoreContext();
@@ -41,10 +42,11 @@ const Home = () => {
             onClick={handleScrollToProjects}
             border 
           />
-          <ButtonLink 
+          <ContactMeBtn />
+          {/* <ButtonLink 
             title={'View Resume'}
             url={home[0].resumeUrl}
-          />
+          /> */}
         </ButtonRow>
       </div>
     </div>

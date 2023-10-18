@@ -5,13 +5,6 @@ import NetworkIcon from '../NetworkIcon'
 import { useSectionsContext } from '@/context/SectionsContext'
 
 const NavBar = () => {
-  const { sections } = useSectionsContext();
-  const contactMeSection = sections.filter(sec => sec.id === 'contactme')[0];
-
-  const handleScrollToContactMe = () => {
-    contactMeSection?.ref?.current?.scrollIntoView({ block: 'start', })
-  }
-
   return (
     <>
       <nav>
@@ -24,9 +17,6 @@ const NavBar = () => {
               <NetworkIcon url='https://www.linkedin.com/in/justin-m-murillo/' />
             </button>
           </div>
-          <button className='contact-me-wrapper' onClick={() => handleScrollToContactMe()}>
-            Contact Me
-          </button>
         </div>
       </nav>
     </>
