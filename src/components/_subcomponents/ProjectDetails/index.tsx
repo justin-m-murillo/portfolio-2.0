@@ -13,7 +13,7 @@ const ProjectDetails = ({ name, description, demoUrl, repoUrl }: ProjectDetailsP
     <div className='project-details text-banner'>
       <h1>{name}</h1>
       <div className='description-wrapper'>
-        {description.map((desc, index) => (
+        {description?.map((desc, index) => (
           <p key={index}>{desc}</p>
         ))}
       </div>
