@@ -18,7 +18,7 @@ const ProjectDetails = ({ name, description, demoUrl, repoUrl }: ProjectDetailsP
         ))}
       </div>
       <ButtonRow className='proj-btn-row'>
-        {demoUrl && <ButtonLink title='Live Demo' url={demoUrl} border />}       
+        {demoUrl && <ButtonLink title='Live Demo' url={demoUrl} border />}
         <ButtonLink title='GitHub Repo' url={repoUrl} />
       </ButtonRow>
     </div>
