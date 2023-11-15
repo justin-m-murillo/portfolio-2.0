@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import styles from './projectimg.module.css'
+import React from 'react'
 import Image from 'next/image'
 import { sanityClient } from '@/utils/configSanity'
 import { useNextSanityImage } from 'next-sanity-image'
@@ -9,14 +10,15 @@ type ProjectImgProps = {
 }
 
 const ProjectImg = ({ image }: ProjectImgProps) => {
-  const imgProps = useNextSanityImage(sanityClient, image)
+  const imgProps = useNextSanityImage(sanityClient, image);
 
   return (
-    <Image 
+    <Image
       {...imgProps}
+      className={styles.image}
       alt={''}
-      style={{ display: 'flex', width: 'auto', height: '100%', borderRadius: '12px' }}
       priority
+      onClick={() => window.open(imgProps.src)}
     />
   )
 }
