@@ -12,9 +12,13 @@ const ContactMeBtn = () => {
   }
 
   return (
-    <div className='contact-me-wrapper'>
+    <button 
+      type='button' 
+      onClick={() => handleScrollToContactMe()}
+      className='contact-me-wrapper'
+    >
       <p>Contact Me</p>
-    </div>
+    </button>
   )
 }
 
