@@ -4,13 +4,15 @@
   justify-content: center;
   color: var(--gray3);
   font-weight: bold;
+  font-size: small;
   width: auto;
   height: auto;
   border: 2px var(--gray6) solid;
   border-radius: 8px;
   padding: 0 1rem;
   background-color: var(--gray7);
-  opacity: 0.8;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .contact-me-wrapper:hover {

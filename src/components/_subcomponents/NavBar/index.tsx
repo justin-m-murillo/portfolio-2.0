@@ -2,9 +2,10 @@ import React from 'react'
 
 import './navbar.css'
 import NetworkIcon from '../NetworkIcon'
-import { useSectionsContext } from '@/context/SectionsContext'
+import ContactMeBtn from '../ContactMeBtn'
 
 const NavBar = () => {
+
   return (
     <>
       <nav>
@@ -16,6 +17,9 @@ const NavBar = () => {
             <button>
               <NetworkIcon url='https://www.linkedin.com/in/justin-m-murillo/' />
             </button>
+          </div>
+          <div>
+            <ContactMeBtn />
           </div>
         </div>
       </nav>

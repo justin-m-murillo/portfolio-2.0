@@ -1,7 +1,7 @@
 import { useSectionsContext } from '@/context/SectionsContext';
 import './contactmebtn.css'
 import React from 'react'
-import { Button } from '../Button';
+import { Button, ButtonLink } from '../Button';
 
 
 const ContactMeBtn = () => {
@@ -12,7 +12,9 @@ const ContactMeBtn = () => {
   }
 
   return (
-    <Button title='Contact Me' onClick={() => handleScrollToContactMe()} />
+    <div className='contact-me-wrapper'>
+      <p>Contact Me</p>
+    </div>
   )
 }
 

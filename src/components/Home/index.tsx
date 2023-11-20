@@ -42,11 +42,11 @@ const Home = () => {
             onClick={handleScrollToProjects}
             border 
           />
-          <ContactMeBtn />
-          {/* <ButtonLink 
-            title={'View Resume'}
+          {/* <ContactMeBtn /> */}
+          <ButtonLink 
+            title={'Resume'}
             url={home[0].resumeUrl}
-          /> */}
+          />
         </ButtonRow>
       </div>
     </div>
